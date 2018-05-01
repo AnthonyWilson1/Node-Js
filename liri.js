@@ -4,7 +4,6 @@ let request = require('request')
 let Twitter = require('twitter')
 let Spotify = require('node-spotify-api')
 let fs = require('fs')
-const queryString = require('query-string')
 let [nope, moar_nope, ...args] = process.argv
 let client = new Twitter(keys.twitter)
 let spotify = new Spotify(keys.spotify)
@@ -24,7 +23,7 @@ var query = parameters[1]
 
 const commands = (param, param2 = 0) => {
     if (param === "my-tweets") {
-        var params = {screen_name: 'anthony11544'};
+        var params = {screen_name: param2};
         client.get('statuses/user_timeline', params, function(error, tweets, response) {
             if (!error) {
                 for (let i = 0; i < tweets.length; i++) {
